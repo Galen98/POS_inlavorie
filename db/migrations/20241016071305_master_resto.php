@@ -24,7 +24,6 @@ final class MasterResto extends AbstractMigration
             ->addColumn('alamat', 'string', ['limit' => 64])
             ->addColumn('thumbnails','string', ['limit' => 255])
             ->addColumn('keterangan','string', ['limit' => 255])
-            ->addColumn('roles', 'integer', ['limit' => 11])
             ->addColumn('created_at', 'timestamp', ['default' => 'CURRENT_TIMESTAMP'])
             ->addColumn('updated_at', 'timestamp', ['default' => 'CURRENT_TIMESTAMP'])
             ->create();
