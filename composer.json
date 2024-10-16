@@ -1,5 +1,8 @@
 {
     "require": {
         "flightphp/core": "^3.12"
+    },
+    "require-dev": {
+        "robmorgan/phinx": "^0.14.0"
     }
 }
