@@ -1,6 +1,6 @@
 <?php 
 namespace App\Controllers;
-use App\Actions\Contact\GetAll;
+use App\Actions\Contact\GetAllContact;
 use Exception;
 use Flight;
 
@@ -13,7 +13,7 @@ class HomeController {
     }
 
     public function getContact(){
-        $day = GetAll::execute();
+        $day = GetAllContact::execute();
         var_dump($day);
         exit();
     }
