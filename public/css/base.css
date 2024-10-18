@@ -1,0 +1,112 @@
+/* base.css */
+
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+.hero {
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    height: 100vh; 
+    text-align: center; 
+}
+
+.contents-hero {
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    height: 65vh; 
+}
+
+.wrapperHero {
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    margin: 0 auto; 
+    padding: 50px; 
+    max-width: 1000px; 
+    background-color: #d1f6e2; 
+    border-radius: 8px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+}
+
+.wrapperHero-2 {
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    margin: 0 auto; 
+    padding: 70px; 
+    max-width: 1000px; 
+    border-radius: 8px; 
+}
+
+.heroImg {
+    max-width: 100%; 
+    height: auto; 
+    margin: 0 auto; 
+}
+
+.small-text{
+    font-size:10px;
+}
+
+.heroImg-2 {
+    max-width: 100%; 
+    height: 400px; 
+    margin: 0 auto; 
+}
+
+.container-hero {
+    max-width: 600px; 
+    padding: 20px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Roboto', sans-serif; 
+}
+
+.txt-color-primer{
+    color: #1a2b49;
+}
+
+.btn-primary{
+    background-color: #0071eb !important;
+    color: white !important;
+    font-weight: bold !important;
+}
+
+.btn-primary:hover{
+    background-color: #0250a3 !important;
+    color: white !important;
+    font-weight: bold !important;
+}
+
+html {
+    font-size: 14px;
+  }
+  @media (min-width: 768px) {
+    html {
+      font-size: 16px;
+    }
+  }
+  
+  .container {
+    max-width: 960px;
+  }
+  
+  .pricing-header {
+    max-width: 700px;
+  }
+  
+  .card-deck .card {
+    min-width: 220px;
+  }
+  
+  .border-top { border-top: 1px solid #e5e5e5; }
+  .border-bottom { border-bottom: 1px solid #e5e5e5; }
+  
+  .box-shadow { box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05); }
+
+
+
