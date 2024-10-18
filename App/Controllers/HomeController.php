@@ -1,6 +1,7 @@
 <?php 
 namespace App\Controllers;
 use App\Actions\Contact\GetAllContact;
+use App\Actions\Contact\PostContact;
 use Exception;
 use Flight;
 
@@ -12,9 +13,14 @@ class HomeController {
         ]);
     }
 
+    //contact function
     public function getContact(){
         $day = GetAllContact::execute();
         var_dump($day);
         exit();
+    }
+
+    public function storeContact(){
+
     }
 }

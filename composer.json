@@ -1,7 +1,9 @@
 {
     "require": {
         "flightphp/core": "^3.12",
-        "latte/latte": "^2.11"
+        "latte/latte": "^2.11",
+        "ghostff/session": "^3.0",
+        "rakit/validation": "^1.4"
     },
     "require-dev": {
         "robmorgan/phinx": "^0.14.0"

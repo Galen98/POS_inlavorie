@@ -22,5 +22,14 @@ class ContactUs {
         $stmt = $db->query("SELECT email, name, message FROM contact_us");
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    public function save() {
+        $db = Database::getInstance()->getConnection();
+        $stmt = $db->prepare("INSERT INTO contact_us (name, email, message) VALUES (:name, :email, :message)");
+        $stmt->bindParam(':name', $this->name);
+        $stmt->bindParam(':email', $this->email);
+        $stmt->bindParam(':message', $this->message);
+        $stmt->execute();
+    }
 }
 ?>

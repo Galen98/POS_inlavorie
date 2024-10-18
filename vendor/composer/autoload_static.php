@@ -37,12 +37,20 @@ class ComposerStaticInitd61a0cb6fcf6ab3ffe7746c206409094
             'Symfony\\Component\\Console\\' => 26,
             'Symfony\\Component\\Config\\' => 25,
         ),
+        'R' => 
+        array (
+            'Rakit\\Validation\\' => 17,
+        ),
         'P' => 
         array (
             'Psr\\SimpleCache\\' => 16,
             'Psr\\Log\\' => 8,
             'Psr\\Container\\' => 14,
             'Phinx\\' => 6,
+        ),
+        'G' => 
+        array (
+            'Ghostff\\Session\\' => 16,
         ),
         'C' => 
         array (
@@ -106,6 +114,10 @@ class ComposerStaticInitd61a0cb6fcf6ab3ffe7746c206409094
         array (
             0 => __DIR__ . '/..' . '/symfony/config',
         ),
+        'Rakit\\Validation\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/rakit/validation/src',
+        ),
         'Psr\\SimpleCache\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/simple-cache/src',
@@ -121,6 +133,10 @@ class ComposerStaticInitd61a0cb6fcf6ab3ffe7746c206409094
         'Phinx\\' => 
         array (
             0 => __DIR__ . '/..' . '/robmorgan/phinx/src/Phinx',
+        ),
+        'Ghostff\\Session\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/ghostff/session/src',
         ),
         'Cake\\Utility\\' => 
         array (
