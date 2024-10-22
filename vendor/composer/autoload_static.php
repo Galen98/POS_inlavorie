@@ -22,6 +22,14 @@ class ComposerStaticInitd61a0cb6fcf6ab3ffe7746c206409094
     );
 
     public static $prefixLengthsPsr4 = array (
+        'f' => 
+        array (
+            'flight\\' => 7,
+        ),
+        'W' => 
+        array (
+            'Wruczek\\PhpFileCache\\' => 21,
+        ),
         'S' => 
         array (
             'Symfony\\Polyfill\\Php81\\' => 23,
@@ -48,9 +56,17 @@ class ComposerStaticInitd61a0cb6fcf6ab3ffe7746c206409094
             'Psr\\Container\\' => 14,
             'Phinx\\' => 6,
         ),
+        'O' => 
+        array (
+            'Overclokk\\Cookie\\' => 17,
+        ),
         'G' => 
         array (
             'Ghostff\\Session\\' => 16,
+        ),
+        'D' => 
+        array (
+            'Defuse\\Crypto\\' => 14,
         ),
         'C' => 
         array (
@@ -66,6 +82,14 @@ class ComposerStaticInitd61a0cb6fcf6ab3ffe7746c206409094
     );
 
     public static $prefixDirsPsr4 = array (
+        'flight\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/flightphp/permissions/src',
+        ),
+        'Wruczek\\PhpFileCache\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/wruczek/php-file-cache/src',
+        ),
         'Symfony\\Polyfill\\Php81\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-php81',
@@ -134,9 +158,17 @@ class ComposerStaticInitd61a0cb6fcf6ab3ffe7746c206409094
         array (
             0 => __DIR__ . '/..' . '/robmorgan/phinx/src/Phinx',
         ),
+        'Overclokk\\Cookie\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/overclokk/cookie/src',
+        ),
         'Ghostff\\Session\\' => 
         array (
             0 => __DIR__ . '/..' . '/ghostff/session/src',
+        ),
+        'Defuse\\Crypto\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/defuse/php-encryption/src',
         ),
         'Cake\\Utility\\' => 
         array (

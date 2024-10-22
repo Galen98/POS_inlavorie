@@ -3,7 +3,11 @@
         "flightphp/core": "^3.12",
         "latte/latte": "^2.11",
         "ghostff/session": "^3.0",
-        "rakit/validation": "^1.4"
+        "rakit/validation": "^1.4",
+        "wruczek/php-file-cache": "^0.0.5",
+        "flightphp/permissions": "^0.1.0",
+        "overclokk/cookie": "^1.0",
+        "defuse/php-encryption": "^2.4"
     },
     "require-dev": {
         "robmorgan/phinx": "^0.14.0"

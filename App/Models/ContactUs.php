@@ -5,14 +5,16 @@ use App\Database\Database;
 use PDO;
 
 class ContactUs {
+    public $id;
     public $name;
     public $email;
     public $message;
 
-    public function __construct($email = null, $name = null, $message = null)
+    public function __construct($id, $name, $email, $message)
     {
-        $this->email = $email;
+        $this->id = $id;
         $this->name = $name;
+        $this->email = $email;
         $this->message = $message;
     }
 

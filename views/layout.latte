@@ -26,24 +26,8 @@
         <div id="content">
             {block content}{/block}
             <!-- Modal -->
-        <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-            <div class="modal-header border-0" style="background-color:#1a2b49;color:white;height:100px;">
-                <h4 class="modal-title fw-bolder" id="myModalLabel">Diskon 35% Penguna Baru!</h4>
-                <button type="button" style="background-color:white;" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
 
-            <div class="modal-body txt-color-prime border-0">
-               Daftarkan diri anda sekarang juga, selesaikan pendaftaran dan klaim bonusnya. <a href="">Daftar disini</a>
-            </div>
-            <div class="modal-footer border-0">
-            <p class="small-text txt-color-prime fw-bolder">*Syarat dan ketentuan berlaku</p>
-            </div>
-        </div>
-        </div>
-        </div>
-        </div>
+    
 
         <div class="modal fade" id="contactModal" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -53,19 +37,21 @@
                 <button type="button" style="background-color:white;" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
 
-            <form>
+            <form action="/postContacts" method="POST">
             <div class="modal-body txt-color-prime border-0">
             <div class="form-group">
-                <label for="exampleFormControlInput1">Email anda</label>
-                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Masukan email anda">
-            </div>
-            <div class="form-group mt-3">
                 <label for="exampleFormControlInput1">Nama anda</label>
-                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Masukan nama anda">
+                <input type="text" class="form-control" name="name" id="exampleFormControlInput1" placeholder="Masukan nama anda" required>
             </div>
+
+            <div class="form-group mt-3">
+                <label for="exampleFormControlInput2">Email anda</label>
+                <input type="email" class="form-control" name="email" id="exampleFormControlInput2" placeholder="Masukan email anda" required>
+            </div>
+            
             <div class="form-group mt-3">
                 <label for="exampleFormControlTextarea1">Pesan anda</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                <textarea class="form-control" name="message" id="exampleFormControlTextarea1" rows="3" required></textarea>
             </div>
             </div>
             <div class="modal-footer border-0">
@@ -77,7 +63,7 @@
         </div>
         </div>
 
-        <div class="container">
+       <div class="container">
         <footer class="py-3 my-4">
             <ul class="nav justify-content-center border-bottom pb-3 mb-3">
             <li class="nav-item"><a href="/" class="nav-link px-2 text-body-secondary">Home</a></li>
@@ -86,10 +72,15 @@
             <li class="nav-item"><button id="contact" class="nav-link px-2 text-body-secondary">Kontak</button></li>
             <li class="nav-item"><a href="#about" class="nav-link px-2 text-body-secondary">Tentang Kami</a></li>
             </ul>
-            <p class="text-center text-body-secondary">© 2024 inLavorie POS v1.0.0</p>
+            <p class="text-center text-body-secondary">© <span id="years"></span> inLavorie POS v1.0.0</p>
         </footer>
         </div>
         {block scripts}{/block}
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script>
+    const d = new Date();
+    let year = d.getFullYear();
+    document.getElementById("years").innerHTML = year;
+    </script>
     </body>
 </html>

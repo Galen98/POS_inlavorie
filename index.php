@@ -2,8 +2,10 @@
 use Latte\Engine as LatteEngine;
 require './vendor/autoload.php';
 require './routes/route.php';
+use Ghostff\Session\Session;
 
 $app = Flight::app();
+$app->register('session', Session::class);
 $app->register('latte', LatteEngine::class, [], function(LatteEngine $latte) use ($app) {
 
   // This is where Latte will cache your templates to speed things up
