@@ -9,7 +9,7 @@
                 <form action="/login" method="POST">
                     <div class="form-group mt-3 mb-3">
                         <label for="email">Email</label>
-                        <input type="text" name="username" class="form-control" id="email" placeholder="Masukkan email" required>
+                        <input type="email" name="username" class="form-control" id="email" placeholder="Masukkan email" required>
                     </div>
                     <div class="form-group mt-3 mb-3">
                         <label for="password">Kata Sandi</label>
@@ -26,4 +26,31 @@
     </div>
 </section>
 {/block}
-{block scripts}{/block}
+{block scripts}
+<script src="../public/scripts/home.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+                toast.onmouseenter = Swal.stopTimer;
+                toast.onmouseleave = Swal.resumeTimer;
+            }
+    });
+
+ function showToast(message, icon = "error") {
+        Toast.fire({
+            icon: icon,
+            title: message
+    });
+        }
+{if isset($eror)}
+showToast({$eror});
+{/if}
+</script>
+{/block}

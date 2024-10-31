@@ -33,6 +33,9 @@ abstract class BaseController
     public function __construct(Engine $app)
     {
         $this->app = $app;
+        $session = new Session();
+        $session->getOrDefault('jwt_token', null);
+        $session->commit();
     }
 
     /**

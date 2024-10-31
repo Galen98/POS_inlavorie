@@ -1,64 +1,59 @@
 <?php 
 use App\Controllers\HomeController;
 use App\Controllers\AuthController;
-
+use App\Middleware\Auth;
 use Ghostff\Session\Session;
-
-// Initialize the session
+use Firebase\JWT\JWT;
+use Firebase\JWT\Key;
+use Firebase\JWT\ExpiredException;
+use Firebase\JWT\SignatureInvalidException;
 
 $session = new Session();
+$authMiddleware = new Auth();
 
 Flight::route('/', [HomeController::class, 'index']);
 Flight::route('/getContacts', [HomeController::class, 'getContact']);
 Flight::route('POST /postContacts', [HomeController::class, 'storeContact']);
 
-//login route
-$user = [
-    'username' => 'admin',
-    'password' => password_hash('password123', PASSWORD_DEFAULT), // Hash the password
-];
-Flight::map('login', function($username, $password) use ($session, $user) {
-    if ($username === $user['username'] && password_verify($password, $user['password'])) {
-        $session->set('user', $username);
-        $session->commit();
-        return true;
-    }
-    return false;
-});
-Flight::map('isLoggedIn', function() use ($session) {
-    
-    var_dump($session->get('user'));
-    exit();
-    return $session->get('user') !== null;
-});
 
+// Route Auth
 Flight::map('logout', function() use ($session) {
     $session->destroy();
 });
 
-// Routes
-Flight::route('POST /login', function() {
+Flight::route('POST /login', function() use ($session) {
     $username = Flight::request()->data->username;
     $password = Flight::request()->data->password;
-    if (Flight::login($username, $password)) {
+    $authController = new AuthController();
+    if ($authController->login($username, $password)) {
+        $session->setFlash('success', 'Login Berhasil');
+        $session->commit();
         Flight::redirect('/');
     } else {
-        Flight::view()->render('login.latte', ['error' => 'Invalid credentials']);
-    }
-});
-Flight::route('GET /dashboard', function() use ($session) {
-    if (Flight::isLoggedIn()) {
-        $username = $session->get('user'); 
-        Flight::latte()->render('dashboard.latte', ['username' => $username]);
-    } else {
+        $session->setFlash('eror', 'Cek kembali password atau email anda');
+        $session->commit();
         Flight::redirect('/login');
     }
+});
+
+Flight::route('GET /dashboard', function() use ($authMiddleware) {
+    $authMiddleware->checkLogin();
+    $controller = new AuthController();
+    return $controller->registerView();
 });
 
 Flight::route('/logout', function() {
     Flight::logout();
     Flight::redirect('/login');
 });
+
 Flight::route('/login', [AuthController::class, 'index']);
 Flight::route('/register', [AuthController::class, 'registerView']);
+Flight::route('/register-post', [AuthController::class, 'registerPost']);
+// Flight::route('GET /register', function() use ($authMiddleware) {
+//     $authMiddleware->checkLogin();
+//     $controller = new AuthController();
+//     return $controller->registerView();
+// });
+
 ?>

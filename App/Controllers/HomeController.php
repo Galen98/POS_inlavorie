@@ -7,22 +7,18 @@ use Exception;
 use Flight;
 use Ghostff\Session\Session;
 
-class HomeController {
-    private $session;
-    
-    public function __construct() {
-        $this->session = new Session();
-    }
-
+class HomeController extends BaseController{
     public function index(){ 
         $session = Flight::session(); 
         $flash =  $session->getFlashOrDefault('flash', null);
+        $success = $session->getFlashOrDefault('success', null);
         $errors =  $session->getFlashOrDefault('errors', null);
         $session->commit(); 
         Flight::latte()->render('home.latte', [
             'title' => 'inLavorie POS - Home Page',
             'flash' => $flash,
-            'errors' => $errors
+            'errors' => $errors,
+            'success' => $success
         ]);
     }
 

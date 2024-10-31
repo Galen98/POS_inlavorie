@@ -54,6 +54,7 @@ class ComposerStaticInitd61a0cb6fcf6ab3ffe7746c206409094
             'Psr\\SimpleCache\\' => 16,
             'Psr\\Log\\' => 8,
             'Psr\\Container\\' => 14,
+            'PhpOption\\' => 10,
             'Phinx\\' => 6,
         ),
         'O' => 
@@ -62,10 +63,16 @@ class ComposerStaticInitd61a0cb6fcf6ab3ffe7746c206409094
         ),
         'G' => 
         array (
+            'GrahamCampbell\\ResultType\\' => 26,
             'Ghostff\\Session\\' => 16,
+        ),
+        'F' => 
+        array (
+            'Firebase\\JWT\\' => 13,
         ),
         'D' => 
         array (
+            'Dotenv\\' => 7,
             'Defuse\\Crypto\\' => 14,
         ),
         'C' => 
@@ -154,6 +161,10 @@ class ComposerStaticInitd61a0cb6fcf6ab3ffe7746c206409094
         array (
             0 => __DIR__ . '/..' . '/psr/container/src',
         ),
+        'PhpOption\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/phpoption/phpoption/src/PhpOption',
+        ),
         'Phinx\\' => 
         array (
             0 => __DIR__ . '/..' . '/robmorgan/phinx/src/Phinx',
@@ -162,9 +173,21 @@ class ComposerStaticInitd61a0cb6fcf6ab3ffe7746c206409094
         array (
             0 => __DIR__ . '/..' . '/overclokk/cookie/src',
         ),
+        'GrahamCampbell\\ResultType\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/graham-campbell/result-type/src',
+        ),
         'Ghostff\\Session\\' => 
         array (
             0 => __DIR__ . '/..' . '/ghostff/session/src',
+        ),
+        'Firebase\\JWT\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/firebase/php-jwt/src',
+        ),
+        'Dotenv\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/vlucas/phpdotenv/src',
         ),
         'Defuse\\Crypto\\' => 
         array (

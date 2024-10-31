@@ -2,26 +2,48 @@
 
 {block content}
 <section>
-<div class="container centered-form">
-    <div class="card col-md-4">
+<div class="container centered-form col-md-4">
+<div class="card border-0">
+    {if isset($eror)}
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+  {foreach $eror as $message}
+    <strong>{$message}</strong><br>
+  {/foreach}
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {/if}
         <div class="card-body">
             <h2 class="text-center mb-4">Registrasi Akun</h2>
-                <form>
+                <form action="/register-post" method="POST">
                     <div class="form-group mt-3 mb-3">
                         <label for="email">Email</label>
-                        <input type="email" class="form-control" id="email" placeholder="Masukkan email" required>
+                        <input type="email" name="email" class="form-control" id="email" placeholder="Masukkan email">
                     </div>
                     <div class="form-group mt-3 mb-3">
                         <label for="nama">Nama</label>
-                        <input type="text" class="form-control" id="nama" placeholder="Masukkan nama lengkap anda" required>
+                        <input type="text" name="name" class="form-control" id="nama" placeholder="Masukkan nama lengkap anda">
                     </div>
                     <div class="form-group mt-3 mb-3">
                         <label for="nohp">Nomor Hp (WhatsApp)</label>
-                        <input type="text" class="form-control" id="nohp" placeholder="Masukkan nomor handphone anda" required>
+                        <input type="text" name="noHp" class="form-control" id="nohp" placeholder="Masukkan nomor handphone anda">
                     </div>
                     <div class="form-group mt-3 mb-3">
-                        <label for="password">Kata Sandi</label>
-                        <input type="password" class="form-control" id="password" placeholder="Masukkan kata sandi" required>
+                        <label>Kata Sandi</label>
+                        <div class="input-group" id="show_hide_password">
+                        <input class="form-control" type="password" name="password" placeholder="Masukkan kata sandi">
+                        <span class="input-group-text" id="basic-addon2">
+                            <a href=""><i class="fa fa-eye-slash" aria-hidden="true"></i></a>
+                        </span>
+                        </div>
+                    </div>
+                    <div class="form-group mt-3 mb-3">
+                        <label>Ulangi Kata Sandi</label>
+                        <div class="input-group" id="show_hide_password2">
+                        <input class="form-control" type="password" name="confirm_password" placeholder="Ulangi kata sandi">
+                        <span class="input-group-text" id="basic-addon2">
+                            <a href=""><i class="fa fa-eye-slash" aria-hidden="true"></i></a>
+                        </span>
+                        </div>
                     </div>
                     <button type="submit" class="btn btn-primary rounded-pill btn-block w-100">Daftar</button>
                     <br/>
@@ -32,4 +54,35 @@
         </div>
     </div>
 </section>
+{/block}
+{block scripts}
+<script>
+$(document).ready(function() {
+    $("#show_hide_password a").on('click', function(event) {
+        event.preventDefault();
+        if($('#show_hide_password input').attr("type") == "text"){
+            $('#show_hide_password input').attr('type', 'password');
+            $('#show_hide_password i').addClass( "fa-eye-slash" );
+            $('#show_hide_password i').removeClass( "fa-eye" );
+        }else if($('#show_hide_password input').attr("type") == "password"){
+            $('#show_hide_password input').attr('type', 'text');
+            $('#show_hide_password i').removeClass( "fa-eye-slash" );
+            $('#show_hide_password i').addClass( "fa-eye" );
+        }
+    });
+
+        $("#show_hide_password2 a").on('click', function(event) {
+        event.preventDefault();
+        if($('#show_hide_password2 input').attr("type") == "text"){
+            $('#show_hide_password2 input').attr('type', 'password');
+            $('#show_hide_password2 i').addClass( "fa-eye-slash" );
+            $('#show_hide_password2 i').removeClass( "fa-eye" );
+        }else if($('#show_hide_password2 input').attr("type") == "password"){
+            $('#show_hide_password2 input').attr('type', 'text');
+            $('#show_hide_password2 i').removeClass( "fa-eye-slash" );
+            $('#show_hide_password2 i').addClass( "fa-eye" );
+        }
+    });
+});
+</script>
 {/block}

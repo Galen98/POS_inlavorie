@@ -3,6 +3,11 @@ use Latte\Engine as LatteEngine;
 require './vendor/autoload.php';
 require './routes/route.php';
 use Ghostff\Session\Session;
+use Dotenv\Dotenv;
+
+$dotenv = Dotenv::createImmutable(__DIR__);
+$dotenv->load();
+$secretKey = getenv('JWT_SECRET_KEY');
 
 $app = Flight::app();
 $app->register('session', Session::class);
