@@ -22,8 +22,11 @@ final class MasterResto extends AbstractMigration
         $table = $this->table('resto_masters', array('id' => 'id'));
         $table->addColumn('nama_resto', 'string', ['limit' => 64])
             ->addColumn('alamat', 'string', ['limit' => 64])
+            ->addColumn('users_id', 'integer', ['limit' => 45, 'null' => false])
             ->addColumn('thumbnails','string', ['limit' => 255])
             ->addColumn('keterangan','string', ['limit' => 255])
+            ->addColumn('contact','string', ['limit' => 255])
+            ->addColumn('status', 'boolean')
             ->addColumn('created_at', 'timestamp', ['default' => 'CURRENT_TIMESTAMP'])
             ->addColumn('updated_at', 'timestamp', ['default' => 'CURRENT_TIMESTAMP'])
             ->create();

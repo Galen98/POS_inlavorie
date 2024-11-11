@@ -20,23 +20,26 @@ class Auth {
         $this->noHp = $noHp;
     }
 
-    public function checkEmailAvail($value){
+    public function save(){
         $db = Database::getInstance()->getConnection();
-        $stmt = $db->prepare("SELECT COUNT(*) FROM users WHERE email = :email");
-        $stmt->bindParam(':email', $value);
-        $stmt->execute();
-        $count = $stmt->fetchColumn();
-
-        return $count == 0;
-    }
-
-    public function saveUser(){
-        $db = Database::getInstance()->getConnection();
-        $stmt = $db->prepare("INSERT INTO users (name, email, password, noHp) VALUES (:name, :email, :password, :noHp)");
+        $stmt = $db->prepare("INSERT INTO users (name, email, password, noHp, Status, roles, activated) VALUES (:name, :email, :password, :noHp, 1, 1, 0)");
+        $passwordHashed = password_hash($this->password, PASSWORD_DEFAULT);
         $stmt->bindParam(':name', $this->name);
         $stmt->bindParam(':email', $this->email);
-        $stmt->bindParam(':password', password_hash($this->password, PASSWORD_DEFAULT));
+        $stmt->bindParam(':password', $passwordHashed);
         $stmt->bindParam(':noHp', $this->noHp);
         $stmt->execute();
+        $this->id = $db->lastInsertId();
+        return true;
+    }
+
+    public static function getAll() {
+        $db = Database::getInstance()->getConnection();
+        $stmt = $db->query("SELECT id, email, password, name, roles FROM users WHERE activated = 1");
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function getId() {
+        return $this->id;
     }
 }

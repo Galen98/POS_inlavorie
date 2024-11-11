@@ -1,0 +1,30 @@
+{extends ../layout.latte}
+{block content}
+<div>
+<h1 class="mt-4">Lihat Resto</h1>
+<ol class="breadcrumb mb-4">
+<li class="breadcrumb-item"><a href="/dashboard">Dashboard</a></li>
+<li class="breadcrumb-item"><a href="/dashboard/daftar-resto">Daftar Resto</a></li>
+<li class="breadcrumb-item active">Lihat Resto</li>
+</ol>
+{foreach $itemresto as $index => $item}
+{if $item['status'] == 1}
+<span><i class="fa-solid fa-circle text-success"></i> Status resto anda buka/tersedia.</span>
+{else}
+<span><i class="fa-solid fa-circle text-danger"></i> Status resto anda tutup/tidak tersedia.</span>
+{/if}
+<div class="row">
+{if $item['thumbnails'] == null}
+<img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" class="rounded-circle mt-4 mb-4" 
+      alt="photo" 
+      style="width: 100px; height: 70px; object-fit: cover; border-radius: 50%;">
+      {else}
+<img src="/public/uploads/img/resto_photo/{$item['thumbnails']}" class="rounded-circle mt-4 mb-4" 
+      alt="photo" 
+      style="width: 100px; height: 70px; object-fit: cover; border-radius: 50%;">
+      {/if}
+
+</div>
+{/foreach}
+</div>
+{/block}

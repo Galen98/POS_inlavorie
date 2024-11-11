@@ -18,7 +18,24 @@
             <div class="container-fluid">
                 <a class="navbar-brand m-2">inLavorie</a>
                 <form class="d-flex m-2" role="search">
+                {if $username}
+                <div class="btn-group">
+                <button class="btn btn-light dropdown-toggle text-capitalize" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <i class="fa-regular fa-circle-user"></i>  Welcome, {$username}
+                </button>
+                <ul class="dropdown-menu m-2">
+                {if $roles == 1}
+                    <li><a class="dropdown-item" href="/dashboard">Dashboard</a></li>
+                {elseif $roles == 2}
+                    <li><a class="dropdown-item" href="/dashboard-kasir">Dashboard</a></li>
+                {/if}
+                    <li><a class="dropdown-item" href="#">Profile</a></li>
+                    <li><a class="dropdown-item" href="/logout">Logout</a></li>
+                </ul>
+                </div>
+                {else}
                 <a href="/login" class="btn btn-primary rounded-pill" type="submit">Masuk</a>
+                {/if}
                 </form>
             </div>
             </nav>
@@ -72,7 +89,9 @@
             <li class="nav-item"><button id="contact" class="nav-link px-2 text-body-secondary">Kontak</button></li>
             <li class="nav-item"><a href="#about" class="nav-link px-2 text-body-secondary">Tentang Kami</a></li>
             </ul>
-            <p class="text-center text-body-secondary">© <span id="years"></span> inLavorie POS v1.0.0</p>
+            <p class="text-center fw-bold">Hubungi Kami</p>
+            <p class="text-center text-secondary"><i class="fas fa-map-marker-alt"></i> Yogyakarta, Indonesia <i class="fa-brands fa-whatsapp"></i> customer support: 083838620526</p>
+            <p class="text-center text-body-secondary">© <span id="years"></span> inLavorie Resto v1.0.0</p>
         </footer>
         </div>
         {block scripts}{/block}

@@ -5,19 +5,25 @@ use App\Actions\Contact\GetAllContact;
 use App\Actions\Contact\PostContact;
 use Exception;
 use Flight;
-use Ghostff\Session\Session;
+
+Flight::map('renderWithUser', function($template, $data = []) {
+    $data['username'] = Flight::get('username') ?: '';
+    $data['roles'] = Flight::get('roles') ?: '';
+    Flight::latte()->render($template, $data);
+});
+
 
 class HomeController extends BaseController{
     public function index(){ 
         $session = Flight::session(); 
         $flash =  $session->getFlashOrDefault('flash', null);
         $success = $session->getFlashOrDefault('success', null);
-        $errors =  $session->getFlashOrDefault('errors', null);
+        $errors =  $session->getFlashOrDefault('error', null);
         $session->commit(); 
-        Flight::latte()->render('home.latte', [
-            'title' => 'inLavorie POS - Home Page',
+        Flight::renderWithUser('home.latte', [
+            'title' => 'inLavorie Resto - Home Page',
             'flash' => $flash,
-            'errors' => $errors,
+            'error' => $errors,
             'success' => $success
         ]);
     }

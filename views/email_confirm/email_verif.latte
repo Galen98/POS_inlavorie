@@ -1,0 +1,14 @@
+{extends ../layout.latte}
+
+{block content}
+<section class="hero">
+  <div class="container-hero">
+    <img src="https://assets.mongodb-cdn.com/mms/static/dist/images/953862e6f29d77cebef307438ae8c10a.png" height="150" width="300">
+     <h5 class="text-gray-soft fw-regular txt-color-primer">Kami mengirim email verifikasi ke:</h5>
+     <h5 class="text-gray-soft fw-regular txt-color-primer">{$user["email"]}</h5>
+     <br/>
+     <h6 class="text-gray-soft fw-regular txt-color-primer">Silahkan klik verifikasi di email, klik resend verification jika tidak menerima verifikasi email.</h6>
+     <button class="rounded-pill btn btn-sm btn-success">Resend Verification</button>
+  </div>
+</section>
+{/block}

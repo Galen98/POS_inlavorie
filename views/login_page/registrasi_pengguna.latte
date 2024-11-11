@@ -4,14 +4,14 @@
 <section>
 <div class="container centered-form col-md-4">
 <div class="card border-0">
-    {if isset($eror)}
+{if isset($eror)}
 <div class="alert alert-danger alert-dismissible fade show" role="alert">
-  {foreach $eror as $message}
-    <strong>{$message}</strong><br>
-  {/foreach}
-  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
-    {/if}
+{foreach $eror as $message}
+<strong>{$message}</strong><br>
+{/foreach}
+<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{/if}
         <div class="card-body">
             <h2 class="text-center mb-4">Registrasi Akun</h2>
                 <form action="/register-post" method="POST">
@@ -48,7 +48,7 @@
                     <button type="submit" class="btn btn-primary rounded-pill btn-block w-100">Daftar</button>
                     <br/>
                     <p class="mb-1 mt-3" style="font-size:10pt;">Sudah punya akun? <a href="/login">login disini!<a></p>
-                    <p class="mb-1" style="font-size:10pt;">*Daftar akun inLavorie POS dan coba sistem kami selama 1 bulan GRATIS.</p>
+                    <p class="mb-1" style="font-size:10pt;">*Daftar akun inLavorie Resto dan coba sistem kami selama 1 bulan GRATIS.</p>
                 </form>
             </div>
         </div>

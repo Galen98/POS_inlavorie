@@ -1,0 +1,55 @@
+{extends ../layout.latte}
+{block content}
+<div>
+<h1 class="mt-4">Tambah Resto</h1>
+<ol class="breadcrumb mb-4">
+<li class="breadcrumb-item"><a href="/dashboard">Dashboard</a></li>
+<li class="breadcrumb-item"><a href="/dashboard/daftar-resto">Daftar Resto</a></li>
+<li class="breadcrumb-item active">Tambah Resto</li>
+</ol>
+
+<div class="row">
+{if isset($eror)}
+<div class="alert alert-danger alert-dismissible fade show mb-3" role="alert">
+<h3>Error</h3>
+{foreach $eror as $message}
+<strong>{$message}</strong><br>
+{/foreach}
+<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{/if}
+
+<div class="card bg-dark text-light border-0" id="forms">
+        <div class="card-body">
+            <form action="/post-resto" method="post" enctype="multipart/form-data">
+                <div class="mb-3">
+                    <label for="nama_resto" class="form-label">Nama Resto</label>
+                    <input type="text" class="form-control" id="nama_resto" name="nama_resto" placeholder="Masukan Nama Resto">
+                </div>
+                <div class="mb-3">
+                    <label for="alamat" class="form-label">Alamat</label>
+                    <input type="text" class="form-control" id="alamat" name="alamat" placeholder="Masukan Alamat Resto">
+                </div>
+                <div class="mb-3">
+                    <label for="phone" class="form-label">Contact</label>
+                    <div class="input-group">
+                        <span class="input-group-text">+62</span>
+                        <input type="tel" class="form-control" id="phone" name="contact" placeholder="81234567890">
+                    </div>
+                    <small class="form-text text-muted">Masukan nomor kontak tanpa +62</small>
+                </div>
+                <div class="mb-3">
+                    <label for="keterangan" class="form-label">Keterangan</label>
+                    <input type="text" class="form-control" id="keterangan" name="keterangan" placeholder="Masukan keterangan">
+                </div>
+                <div class="mb-3">
+                    <label for="logo" class="form-label">Logo Resto</label>
+                    <input class="form-control" accept=".jpg, .jpeg, .png" type="file" id="logo" name="thumbnails">
+                </div>
+                <button type="submit" class="btn btn-primary rounded-pill w-100 mt-4">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+</div>
+{/block}

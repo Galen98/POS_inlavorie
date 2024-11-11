@@ -1,0 +1,59 @@
+{extends ../layout.latte}
+{block content}
+<div>
+<h1 class="mt-4">Daftar Resto</h1>
+<ol class="breadcrumb mb-4">
+<li class="breadcrumb-item"><a href="/dashboard">Dashboard</a></li>
+<li class="breadcrumb-item active">Daftar Resto</li>
+</ol>
+<a class="btn btn-light btn-sm m-2 border" href="/dashboard/add-daftar-resto"><i class="bi bi-plus"></i> Tambah Resto</a>
+{* <div class="input-group w-25 m-2">
+<input class="form-control" type="text" placeholder="Cari..." aria-label="Cari..." aria-describedby="btnNavbarSearch">
+<button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
+</div> *}
+<div class="row mt-4">
+<div class="table-responsive">
+<table class="table table-light table-striped" id="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Nama Resto</th>
+      <th scope="col">Logo</th>
+      <th scope="col">Action</th>
+      <th scope="col">Availability</th>
+    </tr>
+  </thead>
+  <tbody>
+  {if $list}
+      {foreach $list as $index => $item}
+    <tr class="text-capitalize">
+      <th scope="row">{$index + 1}</th>
+      <td>{$item['nama_resto']}</td>
+      {if $item['thumbnails'] == null}
+      <td><img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" class="rounded-circle" 
+      alt="photo" 
+      style="width: 75px; height: 75px; object-fit: cover; border-radius: 50%;"></td>
+      {else}
+      <td><img src="/public/uploads/img/resto_photo/{$item['thumbnails']}" class="rounded-circle" 
+      alt="photo" 
+      style="width: 75px; height: 75px; object-fit: cover; border-radius: 50%;"></td>
+      {/if}
+      <td><div class="btn-group" role="group" aria-label="Basic example">
+      <a type="button" href="/dashboard/daftar-resto/{$item['id']}" class="btn btn-primary"><i class="bi bi-eye-fill"></i> Lihat</a>
+      <button type="button" class="btn btn-primary"><i class="bi bi-pencil-square"></i> Edit</button>
+      </div></td>
+      <td><div class="form-check form-switch">
+      <input class="form-check-input" name="status" type="checkbox" id="flexSwitchCheckChecked" {if $item['status'] == 1}checked{/if}>
+      <label class="form-check-label" for="flexSwitchCheckChecked"></label>
+    </div></td>
+    </tr>
+    {/foreach}
+  {else}
+    <tr><td colspan="5" class="text-center">Data kosong</td></tr>
+  {/if}
+</tbody>
+</table>
+</div>
+</div>
+</div>
+{/block}
