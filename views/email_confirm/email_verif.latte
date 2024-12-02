@@ -8,7 +8,20 @@
      <h5 class="text-gray-soft fw-regular txt-color-primer">{$user["email"]}</h5>
      <br/>
      <h6 class="text-gray-soft fw-regular txt-color-primer">Silahkan klik verifikasi di email, klik resend verification jika tidak menerima verifikasi email.</h6>
-     <button class="rounded-pill btn btn-sm btn-success">Resend Verification</button>
+     <a href="/resend-verif-email/{$token}" class="rounded-pill btn btn-sm btn-success">Resend Verification</a>
   </div>
 </section>
+{/block}
+{block scripts}
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+{if isset($success)}
+    <script>
+        Swal.fire({
+            title: 'Berhasil',
+            text: {$success},
+            icon: 'success',
+            confirmButtonText: 'Ok'
+        });
+    </script>
+{/if}
 {/block}

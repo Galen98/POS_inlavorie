@@ -1,0 +1,99 @@
+{extends ../layout.latte}
+{block content}
+<div>
+<h1 class="mt-4">Perpanjang Langganan</h1>
+<ol class="breadcrumb mb-4">
+<li class="breadcrumb-item"><a href="/dashboard">Dashboard</a></li>
+<li class="breadcrumb-item active">Perpanjang Langganan</li>
+</ol>
+
+<div class="row mt-4">
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+  <div class="card bg-light border-secondary mb-3" id="card-plan">
+  <img src="/public/img/free_plan.png" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h6 class="text-capitalize">Layanan anda saat ini: <span class="fw-bold">{$data[0]['name_subscribed']}</span></h6>
+    <h6 class="text-capitalize">Status: {if $data[0]['activated'] == 1}<span class="badge bg-success">Active</span>{else}<span class="badge bg-danger">Non-Active</span>{/if}</h6>
+    <h6 class="text-capitalize">Tanggal Mulai:  <span class="fw-bold">{$data[0]['created_at']|date:'j/n/Y'}
+    </span></h6>
+    <h6 class="text-capitalize">Tanggal berakhir: <span class="fw-bold">{$data[0]['expired_at']|date:'j/n/Y'}</span></h6>
+    {if $data[0]['subscribe_id'] == 1}
+    <ul class="list-unstyled mt-3 mb-4">
+        <li>Module:</li>
+        <li><i class="fa-solid fa-check text-success"></i> Online Order</li>
+            <li><i class="fa-solid fa-check text-success"></i> Manajemen Penjualan</li>
+            <li><i class="fa-solid fa-check text-success"></i> Manajemen Inventory</li>
+            <li><i class="fa-solid fa-check text-success"></i> Manajemen Resep</li>
+            <li><i class="fa-solid fa-check text-success"></i> CRM</li>
+            <li><i class="fa-solid fa-check text-success"></i> Real-time Reporting</li>
+            <li><i class="fa-solid fa-check text-success"></i> Kitchen Display System(KDS)</li>
+            <li><i class="fa-solid fa-times text-danger"></i> Sales Man Commission</li>
+            <li><i class="fa-solid fa-times text-danger"></i> Manajemen Pembelian (Purchasing)</li>
+            <li><i class="fa-solid fa-times text-danger"></i> Gift Coupon Management</li>
+            <li><i class="fa-solid fa-times text-danger"></i> Offer & Promotion Management</li>
+            <li><i class="fa-solid fa-times text-danger"></i> Sales Man Commission</li>
+    </ul>
+    {elseif $data[0]['subscribe_id'] == 2}
+    <ul class="list-unstyled mt-3 mb-4">
+        <li>Module:</li>
+        <li><i class="fa-solid fa-check text-success"></i> Online Order</li>
+            <li><i class="fa-solid fa-check text-success"></i> Manajemen Penjualan</li>
+            <li><i class="fa-solid fa-check text-success"></i> Manajemen Inventory</li>
+            <li><i class="fa-solid fa-check text-success"></i> Manajemen Resep</li>
+            <li><i class="fa-solid fa-check text-success"></i> CRM</li>
+            <li><i class="fa-solid fa-check text-success"></i> Real-time Reporting</li>
+            <li><i class="fa-solid fa-check text-success"></i> Kitchen Display System(KDS)</li>
+            <li><i class="fa-solid fa-check text-success"></i> Sales Man Commission</li>
+            <li><i class="fa-solid fa-check text-success"></i> Manajemen Pembelian (Purchasing)</li>
+            <li><i class="fa-solid fa-check text-success"></i> Gift Coupon Management</li>
+            <li><i class="fa-solid fa-check text-success"></i> Offer & Promotion Management</li>
+            <li><i class="fa-solid fa-check text-success"></i> Sales Man Commission</li>
+    </ul>
+    {elseif $data[0]['subscribe_id'] == 3}
+    <ul class="list-unstyled mt-3 mb-4">
+        <li>Module:</li>
+        <li><i class="fa-solid fa-check text-success"></i> Online Order</li>
+            <li><i class="fa-solid fa-check text-success"></i> Manajemen Penjualan</li>
+            <li><i class="fa-solid fa-check text-success"></i> Manajemen Inventory</li>
+            <li><i class="fa-solid fa-check text-success"></i> Manajemen Resep</li>
+            <li><i class="fa-solid fa-check text-success"></i> CRM</li>
+            <li><i class="fa-solid fa-check text-success"></i> Real-time Reporting</li>
+            <li><i class="fa-solid fa-times text-danger"></i> Kitchen Display System(KDS)</li>
+            <li><i class="fa-solid fa-times text-danger"></i> Sales Man Commission</li>
+            <li><i class="fa-solid fa-times text-danger"></i> Manajemen Pembelian (Purchasing)</li>
+            <li><i class="fa-solid fa-times text-danger"></i> Gift Coupon Management</li>
+            <li><i class="fa-solid fa-times text-danger"></i> Offer & Promotion Management</li>
+            <li><i class="fa-solid fa-times text-danger"></i> Sales Man Commission</li>
+    </ul>
+    {/if}
+    {if $data[0]['subscribe_id'] != 3}
+    <button type="submit" id="btn-action-primer" class="btn btn-light rounded-pill w-100 mt-4">Perpanjang Langganan</button>
+    {/if}
+  </div>
+</div>
+    </div>
+    <div class="col-sm">
+    <div class="card bg-light border-secondary" id="card-plan">
+      <div class="card-body">
+        <h5 class="text-capitalize fw-bold">Paket Mikro</h5>
+        <h2>Rp.50.000 <small>/bln</small></h2>
+        <button type="submit" id="btn-action-primer" class="btn btn-light rounded-pill w-100 mt-4">Pilih Paket</button>
+      </div>
+    </div>
+    </div>
+    <div class="col-sm">
+      <div class="card bg-light border-secondary" id="card-plan">
+      <div class="card-body">
+        <h5 class="text-capitalize fw-bold">Paket Professional</h5>
+        <h2>Rp.100.000 <small>/bln</small></h2>
+        <button type="submit" id="btn-action-primer" class="btn btn-light rounded-pill w-100 mt-4">Pilih Paket</button>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+{/block}

@@ -5,8 +5,9 @@
 <div class="container centered-form">
     <div class="card col-md-4">
         <div class="card-body">
-            <h2 class="text-center mb-4">Login Akun</h2>
+            <h2 class="text-center mb-4 fw-bolder txt-color-primer">Login Akun</h2>
                 <form action="/login" method="POST">
+                <input type="hidden" value="{$csrf}" id="csrf_token" name="csrf_token"/>
                     <div class="form-group mt-3 mb-3">
                         <label for="email">Email</label>
                         <input type="email" name="username" class="form-control" id="email" placeholder="Masukkan email" required>
@@ -20,7 +21,7 @@
                         </span>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary rounded-pill btn-block w-100">Masuk</button>
+                    <button type="submit" class="btn btn-dark rounded-pill btn-block w-100">Masuk</button>
                     <br/>
                     <p class="mb-1 mt-3" style="font-size:10pt;">Lupa kata sandi? <a href="/">Klik disini!<a></p>
                     <p class="mb-1" style="font-size:10pt;">Ingin mendaftar inLavorie POS? <a href="/register">Klik disini!<a></p>

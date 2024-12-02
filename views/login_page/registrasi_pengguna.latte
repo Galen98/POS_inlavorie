@@ -13,8 +13,9 @@
 </div>
 {/if}
         <div class="card-body">
-            <h2 class="text-center mb-4">Registrasi Akun</h2>
+            <h2 class="text-center mb-4 fw-bolder text-primer txt-color-primer">Registrasi Akun</h2>
                 <form action="/register-post" method="POST">
+                <input type="hidden" value="{$csrf}" id="csrf_token" name="csrf_token"/>
                     <div class="form-group mt-3 mb-3">
                         <label for="email">Email</label>
                         <input type="email" name="email" class="form-control" id="email" placeholder="Masukkan email">
@@ -45,7 +46,7 @@
                         </span>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary rounded-pill btn-block w-100">Daftar</button>
+                    <button type="submit" class="btn btn-dark rounded-pill btn-block w-100">Daftar</button>
                     <br/>
                     <p class="mb-1 mt-3" style="font-size:10pt;">Sudah punya akun? <a href="/login">login disini!<a></p>
                     <p class="mb-1" style="font-size:10pt;">*Daftar akun inLavorie Resto dan coba sistem kami selama 1 bulan GRATIS.</p>

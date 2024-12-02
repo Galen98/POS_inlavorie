@@ -6,7 +6,7 @@
 <li class="breadcrumb-item"><a href="/dashboard">Dashboard</a></li>
 <li class="breadcrumb-item active">Daftar Resto</li>
 </ol>
-<a class="btn btn-light btn-sm m-2 border" href="/dashboard/add-daftar-resto"><i class="bi bi-plus"></i> Tambah Resto</a>
+<a class="btn btn-light btn-sm m-2 border" id="btn-action" href="/dashboard/add-daftar-resto"><i class="bi bi-plus"></i> Tambah Resto</a>
 {* <div class="input-group w-25 m-2">
 <input class="form-control" type="text" placeholder="Cari..." aria-label="Cari..." aria-describedby="btnNavbarSearch">
 <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
@@ -38,14 +38,16 @@
       alt="photo" 
       style="width: 75px; height: 75px; object-fit: cover; border-radius: 50%;"></td>
       {/if}
-      <td><div class="btn-group" role="group" aria-label="Basic example">
-      <a type="button" href="/dashboard/daftar-resto/{$item['id']}" class="btn btn-primary"><i class="bi bi-eye-fill"></i> Lihat</a>
-      <button type="button" class="btn btn-primary"><i class="bi bi-pencil-square"></i> Edit</button>
-      </div></td>
-      <td><div class="form-check form-switch">
-      <input class="form-check-input" name="status" type="checkbox" id="flexSwitchCheckChecked" {if $item['status'] == 1}checked{/if}>
-      <label class="form-check-label" for="flexSwitchCheckChecked"></label>
-    </div></td>
+      <td>
+      <a type="button" id="btn-action" href="/dashboard/daftar-resto/detail-resto/{$item['id']}" class="btn btn-light"><i class="bi bi-eye-fill"></i> Detail</a>
+      </td>
+      <td>
+      <input type="hidden" value="{$csrf}" id="csrf_token" name="csrf_token"/>
+      <div class="form-check form-switch">
+      <input class="form-check-input border-0" data-id="{$item['id']}" name="status" type="checkbox" id="switchstatus{$index}" {if $item['status'] == 1}checked{/if}>
+      <label class="form-check-label" for="switchstatus{$index}"></label>
+      </div>
+      </td>
     </tr>
     {/foreach}
   {else}
@@ -56,4 +58,7 @@
 </div>
 </div>
 </div>
+{/block}
+{block scripts}
+<script src="/public/scripts/module/resto-manage.js"></script>
 {/block}

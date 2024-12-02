@@ -27,9 +27,10 @@ class RestoMaster {
 
     public function save() {
         $userId = Flight::get('userId');
+        $uid = uniqid();
         $db = Database::getInstance()->getConnection();
-        $stmt = $db->prepare("INSERT INTO resto_masters (users_id, nama_resto, alamat, thumbnails, keterangan, contact, status) VALUES (:userId, :nama_resto, :alamat, :thumbnails, :keterangan, :contact, 1)");
-
+        $stmt = $db->prepare("INSERT INTO resto_masters (uid, users_id, nama_resto, alamat, thumbnails, keterangan, contact, status) VALUES (:uid, :userId, :nama_resto, :alamat, :thumbnails, :keterangan, :contact, 1)");
+        $stmt->bindParam(':uid', $uid);
         $stmt->bindParam(':userId', $userId);
         $stmt->bindParam(':nama_resto', $this->nama_resto);
         $stmt->bindParam(':alamat', $this->alamat);
@@ -43,13 +44,17 @@ class RestoMaster {
     public static function getList() {
         $userId = Flight::get('userId');
         $db = Database::getInstance()->getConnection();
-        $stmt = $db->query("SELECT id, nama_resto, thumbnails, status FROM resto_masters WHERE users_id = $userId");
+        $stmt = $db->prepare("SELECT id, nama_resto, thumbnails, status FROM resto_masters WHERE users_id = :userId");
+        $stmt->bindParam(':userId', $userId);
+        $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
     public static function getById($id) {
         $db = Database::getInstance()->getConnection();
-        $stmt = $db->query("SELECT id, nama_resto, thumbnails, alamat, keterangan, contact, status FROM resto_masters WHERE id = $id");
+        $stmt = $db->query("SELECT id, nama_resto, thumbnails, alamat, keterangan, contact, status FROM resto_masters WHERE id = :id");
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 

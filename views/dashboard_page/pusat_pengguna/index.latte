@@ -1,0 +1,81 @@
+{extends ../layout.latte}
+{block content}
+<div>
+<h1 class="mt-4">Pusat Pengguna</h1>
+<ol class="breadcrumb mb-4">
+<li class="breadcrumb-item"><a href="/dashboard">Dashboard</a></li>
+<li class="breadcrumb-item active">Pusat Pengguna</li>
+</ol>
+
+<div class="row mt-4">
+{foreach $userData as $index => $item}
+<div class="card bg-light border-secondary mb-3" id="card-plan">
+<div class="card-body">
+    <h5 class="text-capitalize fw-bold">Account</h5>
+     <div class="mb-3">
+            <input type="hidden" value="{$csrf}" id="csrf_token" name="csrf_token"/>
+            <label for="name" class="form-label">Nama</label>
+            <input type="text" class="editacc form-inputs form-control text-muted text-capitalize bg-light text-dark" id="name" name="name" placeholder="Masukan Nama Anda" readonly value="{$item['name']}">
+      </div>
+      <div class="mb-3">
+            <label for="name" class="form-label">Email</label>
+            <input type="email" class="form-inputs form-control text-muted bg-light text-dark" id="email" name="email" placeholder="Masukan Email Anda" readonly value="{$item['email']}">
+      </div>
+      <div class="mb-3">
+        <label for="phone" class="form-label">No Handphone</label>
+        <div class="input-group">
+            <span class="input-group-text">+62</span>
+            <input type="tel" class="editacc form-inputs form-control text-muted bg-light text-dark" id="phone" name="noHp" placeholder="81234567890" readonly value="{$item['noHp']}">
+    </div>
+    <button type="button" id="edit-account" class="btn btn-secondary rounded mt-3">Edit Account</button>
+    <div id="div-submit-account">
+    </div>
+    <div class="mb-3 mt-5">
+        <label for="phone" class="form-label">Reset Password</label>
+        <br/>
+        <small>*Demi keamanan, ikuti instruksi dan tetap jaga kerahasiaan password anda</small>
+        <br/>
+        <a href="/dashboard/profile/reset-password" class="btn btn-secondary rounded"><i class="bi bi-key-fill"></i> Reset Sekarang</a>
+    </div>
+    </div>
+    </div>
+    </div>
+{/foreach}
+
+
+<div class="card bg-light border-secondary mb-3" id="card-plan">
+    <div class="card-body">
+<form id="uploadProfile" action="/update-profile" method="POST" enctype="multipart/form-data">
+    <div class="row">
+        <h5 class="text-capitalize fw-bold">Profile</h5>
+        {foreach $userProfile as $index => $item}
+            {if $item['profile_pict'] == null}
+        <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" class="rounded-circle mt-4 mb-4" alt="photo" style="width: 100px; height: 70px; object-fit: cover; border-radius: 50%;">
+            {else}
+        <img src="/public/uploads/img/profile_pic/{$item['profile_pict']}" class="rounded-circle mt-4 mb-4" alt="photo" style="width: 100px; height: 70px; object-fit: cover; border-radius: 50%;">
+            {/if}
+            <input type="hidden" value="{$csrf}" name="csrf_token"/>
+            <input type="file" accept=".jpg, .jpeg, .png" name="profile_pic" id="logo"/>
+        <div class="mb-3 mt-3">
+            <label for="name" class="form-label">Alamat Lengkap</label>
+            <input type="text" class="editprof form-inputs form-control text-muted text-capitalize bg-light text-dark" id="alamat_lengkap" name="alamat_lengkap" placeholder="Masukan Alamat Lengkap Anda" readonly value="{$item['alamat_lengkap']}">
+        </div>
+        <div class="mb-3 mt-3">
+            <label for="name" class="form-label">Kode Pos</label>
+            <input type="text" class="editprof form-inputs form-control text-muted text-capitalize bg-light text-dark" id="kode_pos" name="kode_pos" placeholder="Masukan Kode Pos Anda" readonly value="{$item['kode_pos']}">
+        </div>
+        {/foreach}
+        </div>
+    <button type="button" id="edit-profile" class="btn btn-secondary rounded mt-3">Edit Profile</button>
+    <div id="div-submit-profile">
+    </div>
+</form>
+</div>
+</div>
+
+</div>
+</div>
+{/block}
+{block scripts}
+<script src="/public/scripts/module/pusat-pengguna.js"></script>
+{/block}

@@ -30,6 +30,7 @@ class Auth {
         $stmt->bindParam(':noHp', $this->noHp);
         $stmt->execute();
         $this->id = $db->lastInsertId();
+
         return true;
     }
 

@@ -1,11 +1,11 @@
 {extends ../layout.latte}
 {block content}
 <div>
-<h1 class="mt-4">Lihat Resto</h1>
+<h1 class="mt-4">Detail Resto</h1>
 <ol class="breadcrumb mb-4">
 <li class="breadcrumb-item"><a href="/dashboard">Dashboard</a></li>
 <li class="breadcrumb-item"><a href="/dashboard/daftar-resto">Daftar Resto</a></li>
-<li class="breadcrumb-item active">Lihat Resto</li>
+<li class="breadcrumb-item active">Detail Resto</li>
 </ol>
 {foreach $itemresto as $index => $item}
 {if $item['status'] == 1}
@@ -24,7 +24,55 @@
       style="width: 100px; height: 70px; object-fit: cover; border-radius: 50%;">
       {/if}
 
+      <div class="mb-3">
+            <label for="nama_resto" class="form-label">Nama Resto</label>
+            <input type="text" class="form-inputs form-control text-muted text-capitalize bg-light text-dark" id="nama_resto" name="nama_resto" placeholder="Masukan Nama Resto" readonly value="{$item['nama_resto']}">
+      </div>
+
+      <div class="mb-3">
+            <label for="alamat" class="form-label">Alamat</label>
+            <input type="text" class="form-inputs form-control text-muted text-capitalize bg-light text-dark" id="alamat" name="alamat" placeholder="Masukan Alamat Resto" readonly value="{$item['alamat']}">
+      </div>
+
+      <div class="mb-3">
+            <label for="phone" class="form-label">Contact</label>
+            <div class="input-group">
+            <span class="input-group-text">+62</span>
+            <input type="tel" class="form-inputs form-control text-muted bg-light text-dark" id="phone" name="contact" placeholder="81234567890" readonly value="{$item['contact']}">
+            </div>
+      </div>
+
+      <div class="mb-3">
+            <label for="keterangan" class="form-label">Keterangan</label>
+            <input type="text" class="form-inputs text-capitalize text-muted form-control bg-light text-dark" id="keterangan" name="keterangan" placeholder="Masukan keterangan" readonly value="{$item['keterangan']}">
+      </div>
+</div>
+<button type="button" class="btn btn-danger btn-sm rounded mt-4" id="hapus-data-resto" data-id="{$item['id']}"><i class="bi bi-trash"></i> Hapus Data Resto</button>
+
+
+<div class="modal fade" id="confirmDeleteRestoModal" tabindex="-1" aria-labelledby="confirmDeleteLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content bg-light text-dark">
+            <div class="modal-header">
+                <h5 class="modal-title" id="confirmDeleteLabel">Konfirmasi Hapus Data</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="/delete-resto" method="post" enctype="multipart/form-data">
+            <input type="hidden" id="confirmDeleteRestoButton"/>
+            <div class="modal-body">
+                Data yang berkaitan dengan resto ini akan dihapus permanen (termasuk produk), apakah Anda yakin?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                <button type="submit" class="btn btn-danger">Hapus</button>
+            </div>
+            </form>
+        </div>
+    </div>
 </div>
 {/foreach}
 </div>
+{/block}
+{block scripts}
+<script src="/public/scripts/module/resto-manage.js"></script>
 {/block}

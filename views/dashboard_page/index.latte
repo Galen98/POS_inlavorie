@@ -1,4 +1,22 @@
 {extends layout.latte}
 {block content}
-<h1></h1>
+<div>
+<h1 class="mt-4">Dashboard</h1>
+<ol class="breadcrumb mb-4">
+<li class="breadcrumb-item active">Dashboard</li>
+</ol>
+
+<div class="row mt-4">
+<div class="container">
+  <div class="row">
+  {if $expsub == true}
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+  <strong>Masa berakhir berlanganan anda tanggal {$expiredAt}!</strong> segera perpanjang paket langganan anda.
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{/if}
+</div>
+</div>
+</div>
+</div>
 {/block}

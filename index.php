@@ -12,20 +12,36 @@ use React\EventLoop\Factory;
 use React\MySQL\ConnectionInterface;
 use React\MySQL\Factory as MySQLFactory;
 use React\Promise\Promise;
+use Wruczek\PhpFileCache\PhpFileCache;
 
 $dotenv = Dotenv::createImmutable(__DIR__);
 $dotenv->load();
 $secretKey = getenv('JWT_SECRET_KEY');
 
 $app = Flight::app();
+$app->register('cache', PhpFileCache::class, [ __DIR__ . '/../cache/' ], function(PhpFileCache $cache) {
+	$cache->setDevMode(ENVIRONMENT === 'development');
+});
 $app->register('session', Session::class);
 $app->register('latte', LatteEngine::class, [], function(LatteEngine $latte) use ($app) {
-  $latte->setTempDirectory(__DIR__ . '/../cache/');
+  $latte->setTempDirectory( __DIR__ .'/../cache/');
 
   $latte->setLoader(new \Latte\Loaders\FileLoader($app->get('flight.views.path')));
 });
 
 Flight::before('start', function() {
+if(Flight::session()->getOrDefault('csrf_token') === null) {
+    Flight::session()->set('csrf_token', bin2hex(random_bytes(32)) );
+}
+
+if(Flight::request()->method == 'POST') {
+    $token = Flight::request()->data->csrf_token;
+    if($token !== Flight::session()->get('csrf_token')) {
+        Flight::halt(403, 'Invalid CSRF token');
+        Flight::jsonHalt(['error' => 'Invalid CSRF token'], 403);
+    }
+}
+
   $config = include './config/database.php';
   $loop = Factory::create();
   $mysqlFactory = new MySQLFactory($loop);
@@ -62,9 +78,12 @@ Flight::before('start', function() {
 
             if ($userData) {
                 Flight::set('username', $userData['name']);
+                Flight::set('expsub', $userData['expsub']);
                 Flight::set('roles', $userData['roles']);
                 Flight::set('userId', $userData['userId']);
-                Flight::set('subscribeId', $subscribeId);
+                Flight::set('substatus', $userData['substatus']);
+                Flight::set('expiredAt', $userData['expiredAt']);
+                Flight::set('subactive', $userData['subactive']);
                 Flight::set('module_resto_manage', $module_resto_manage);
             }
         })

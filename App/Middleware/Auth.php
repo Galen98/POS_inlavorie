@@ -4,6 +4,8 @@ use Ghostff\Session\Session;
 use Firebase\JWT\JWT;
 use Firebase\JWT\Key;
 use Flight;
+use App\Database\Database;
+use PDO;
 
 class Auth {
     private static $secretKey = '7c9b0d5c74a9f74f36b35edabb4c77d3e7a4b5c8f59a3b98a10c5fbb7a0a8fdd';
@@ -13,7 +15,7 @@ class Auth {
         $session->commit();
 
         if (!$jwtToken) { 
-            $session->setFlash('eror', 'Silahkan login dahulu');
+            $session->setFlash('eror', 'Silahkan login terlebih dahulu');
             $session->commit();
             Flight::redirect('/login'); 
         }

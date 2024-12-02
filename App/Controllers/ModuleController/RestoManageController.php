@@ -8,9 +8,11 @@ use Ghostff\Session\Session;
 use App\Models\Module\RestoManage\RestoMaster;
 use Rakit\Validation\Validator;
 use App\ActionsModule\App\RestoManage\SaveResto;
+use App\Models\Subscribe;
 
 Flight::map('renderWithUser', function($template, $data = []) {
     $session = Flight::session();
+    $data['csrf'] = Flight::session()->get('csrf_token');
     $data['subscribeId'] = Flight::get('subscribeId');
     $data['username'] = Flight::get('username');
     $data['userId'] = Flight::get('userId');
@@ -60,12 +62,8 @@ class RestoManageController {
         $session = Flight::session(); 
         $userId = Flight::get('userId');
         $db = Database::getInstance()->getConnection();
-        $stmt = $db->prepare("SELECT subscribe_id FROM subcribed_users WHERE users_id = :userId");
-        $stmt->bindParam(':userId', $userId, PDO::PARAM_INT);
-        $stmt->execute();
-        $results = $stmt->fetch(PDO::FETCH_ASSOC);
-        $getSubscribe = (int)$results['subscribe_id'];
-
+        $Subscribe = Subscribe::getSub($userId);
+        $getSubscribe = (int)$Subscribe[0]['subscribe_id'];
         $stmt = $db->prepare("SELECT COUNT(*) FROM resto_masters WHERE users_id = :userId ");
         $stmt->bindParam(':userId', $userId, PDO::PARAM_INT);
         $stmt->execute();
@@ -166,6 +164,19 @@ class RestoManageController {
         $session->commit();
         Flight::redirect('/dashboard/daftar-resto');
     }
+    }
+    
+    //activated_resto
+    public function active_resto(){
+        $request = Flight::request();
+        $id = $request->data->id;
+        $status = $request->data->checked ? 1 : 0;
+
+        $db = Database::getInstance()->getConnection();
+        $stmt = $db->prepare("UPDATE resto_masters SET status = :status WHERE id = :id");
+        $stmt->bindParam(':status', $status, PDO::PARAM_INT);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
     }
 
 
