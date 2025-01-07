@@ -1,5 +1,6 @@
 <?php 
 namespace App\Controllers;
+
 use Rakit\Validation\Validator;
 use App\Actions\Contact\GetAllContact;
 use App\Actions\Contact\PostContact;
@@ -17,7 +18,7 @@ Flight::map('renderWithUser', function($template, $data = []) {
 
 
 class HomeController extends BaseController{
-    public function notFound(){
+    public static function notFound(){
         Flight::renderWithUser('404.latte',[
             'title' => '404 not found'
         ]);
