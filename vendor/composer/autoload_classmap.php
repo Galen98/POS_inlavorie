@@ -7,7 +7,9 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Attribute' => $vendorDir . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
+    'CURLStringFile' => $vendorDir . '/symfony/polyfill-php81/Resources/stubs/CURLStringFile.php',
     'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
+    'JsonException' => $vendorDir . '/symfony/polyfill-php73/Resources/stubs/JsonException.php',
     'Latte\\Attributes\\TemplateFilter' => $vendorDir . '/latte/latte/src/Latte/attributes.php',
     'Latte\\Attributes\\TemplateFunction' => $vendorDir . '/latte/latte/src/Latte/attributes.php',
     'Latte\\Bridges\\Tracy\\BlueScreenPanel' => $vendorDir . '/latte/latte/src/Bridges/Tracy/BlueScreenPanel.php',
@@ -59,6 +61,7 @@ return array(
     'Latte\\Tools\\Linter' => $vendorDir . '/latte/latte/src/Tools/Linter.php',
     'Normalizer' => $vendorDir . '/symfony/polyfill-intl-normalizer/Resources/stubs/Normalizer.php',
     'PhpToken' => $vendorDir . '/symfony/polyfill-php80/Resources/stubs/PhpToken.php',
+    'ReturnTypeWillChange' => $vendorDir . '/symfony/polyfill-php81/Resources/stubs/ReturnTypeWillChange.php',
     'Stringable' => $vendorDir . '/symfony/polyfill-php80/Resources/stubs/Stringable.php',
     'UnhandledMatchError' => $vendorDir . '/symfony/polyfill-php80/Resources/stubs/UnhandledMatchError.php',
     'ValueError' => $vendorDir . '/symfony/polyfill-php80/Resources/stubs/ValueError.php',

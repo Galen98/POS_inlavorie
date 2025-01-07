@@ -52,14 +52,14 @@ class RestoMaster {
 
     public static function getById($id) {
         $db = Database::getInstance()->getConnection();
-        $stmt = $db->query("SELECT id, nama_resto, thumbnails, alamat, keterangan, contact, status FROM resto_masters WHERE id = :id");
+        $stmt = $db->prepare("SELECT id, nama_resto, thumbnails, alamat, keterangan, contact, status FROM resto_masters WHERE id = :id");
         $stmt->bindParam(':id', $id);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function update($id) {
+    // public function update($id) {
 
-    }
+    // }
 }
 ?>

@@ -23,16 +23,18 @@
         <div class="card-body">
             <form action="/post-resto" method="post" enctype="multipart/form-data">
             <input type="hidden" value="{$csrf}" id="csrf_token" name="csrf_token"/>
+            <h5>Informasi Toko</h5>
+            <hr/>
                 <div class="mb-3">
                     <label for="nama_resto" class="form-label">Nama Resto</label>
                     <input type="text" class="form-inputs form-control bg-light text-dark" id="nama_resto" name="nama_resto" placeholder="Masukan Nama Resto">
                 </div>
                 <div class="mb-3">
                     <label for="alamat" class="form-label">Alamat</label>
-                    <input type="text" class="form-inputs form-control bg-light text-dark" id="alamat" name="alamat" placeholder="Masukan Alamat Resto">
+                    <textarea rows="3" cols="50" class="form-inputs form-control bg-light text-dark" id="alamat" name="alamat" placeholder="Masukan Alamat Resto"></textarea>
                 </div>
                 <div class="mb-3">
-                    <label for="phone" class="form-label">Contact</label>
+                    <label for="phone" class="form-label">Whatsapp</label>
                     <div class="input-group">
                         <span class="input-group-text">+62</span>
                         <input type="tel" class="form-inputs form-control bg-light text-dark" id="phone" name="contact" placeholder="81234567890">
@@ -40,8 +42,25 @@
                     <small class="form-text text-muted">Masukan nomor kontak tanpa +62</small>
                 </div>
                 <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-inputs form-control bg-light text-dark" id="email" name="email" placeholder="Masukan Email Resto">
+                </div>
+                <div class="mb-3">
                     <label for="keterangan" class="form-label">Keterangan</label>
                     <input type="text" class="form-inputs form-control bg-light text-dark" id="keterangan" name="keterangan" placeholder="Masukan keterangan">
+                </div>
+                <h5 class="mt-4">Informasi Tambahan Untuk eMenu</h5>
+                <hr/>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Sosial Media</label>
+                    <div class="input-group">
+                        <span class="input-group-text">www.instagram.com/</span>
+                        <input type="text" class="form-inputs form-control bg-light text-dark" id="ig" name="ig" placeholder="nama akun resto anda">
+                    </div>
+                    <div class="input-group mt-2">
+                        <span class="input-group-text">www.facebook.com/</span>
+                        <input type="text" class="form-inputs form-control bg-light text-dark" id="fb" name="fb" placeholder="nama akun resto anda">
+                    </div>
                 </div>
                 <div class="mb-3">
                     <label for="logo" class="form-label">Logo Resto</label>

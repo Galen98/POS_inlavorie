@@ -93,5 +93,6 @@ if(Flight::request()->method == 'POST') {
         $loop->run();
   }
 });
+//start server
 Flight::start();
 ?>

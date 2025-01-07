@@ -36,4 +36,7 @@ $("#hapus-data-resto").on('click', function(){
     $('#confirmDeleteRestoButton').val(id); 
     $('#confirmDeleteRestoModal').modal('show');
 })
+
+//edit page
+
 });
